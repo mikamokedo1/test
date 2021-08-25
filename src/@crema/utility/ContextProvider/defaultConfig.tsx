@@ -15,7 +15,7 @@ const cardRadius = ThemeStyleRadius.STANDARD;
 const defaultConfig: any = {
   theme: {
     spacing: 4,
-    direction: 'ltr', //ltr, rtl
+    direction: 'ltr', // ltr, rtl
     palette: {
       type: ThemeMode.LIGHT,
       background: {
@@ -23,7 +23,7 @@ const defaultConfig: any = {
         default: '#F4F7FE',
       },
       primary: {
-        main: '#0A8FDC',
+        main: '#019748',
         contrastText: '#fff',
       },
       secondary: {
@@ -50,7 +50,7 @@ const defaultConfig: any = {
         A700: '#616161',
       },
       text: {
-        primary: '#495057',
+        primary: '#192A3E',
         secondary: '#74788d',
         disabled: '#909098',
         hint: '#aeafb8',
@@ -105,9 +105,7 @@ const defaultConfig: any = {
       MuiCardLg: {
         root: {
           borderRadius:
-            cardRadius === ThemeStyleRadius.STANDARD
-              ? ThemeStyleRadius.STANDARD
-              : ThemeStyleRadius.MODERN + 20,
+            cardRadius === ThemeStyleRadius.STANDARD ? ThemeStyleRadius.STANDARD : ThemeStyleRadius.MODERN + 20,
         },
       },
       MuiCard: {

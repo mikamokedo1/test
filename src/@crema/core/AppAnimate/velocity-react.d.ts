@@ -12,7 +12,7 @@ declare module 'velocity-react' {
   export class VelocityComponent extends React.Component<
     VelocityComponentProps
   > {
-    runAnimation(config: {stop?: boolean; finish?: boolean}): void;
+    public runAnimation(config: {stop?: boolean; finish?: boolean}): void;
   }
 
   export interface VelocityAnimationObject extends jquery.velocity.Options {

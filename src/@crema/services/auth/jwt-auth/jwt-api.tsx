@@ -1,14 +1,15 @@
 import axios from 'axios';
+
 const BaseAPI = process.env.REACT_APP_API_URL;
 const jwtAxios = axios.create({
-  baseURL: BaseAPI, 
+  baseURL: BaseAPI,
   headers: {
     'Content-Type': 'application/json',
   },
 });
 jwtAxios.interceptors.response.use(
-  res => res,
-  err => {
+  (res) => res,
+  (err) => {
     if (err.response && err.response.data.msg === 'Token is not valid') {
       console.log('Need to logout user');
       // store.dispatch({type: LOGOUT});

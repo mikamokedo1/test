@@ -4,14 +4,14 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import {Form, Formik, useField} from 'formik';
 import * as yup from 'yup';
-import InfoView from '../../../@crema/core/InfoView';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
-import IntlMessages from '../../../@crema/utility/IntlMessages';
 import {makeStyles} from '@material-ui/core';
-import {Fonts} from 'shared/constants/AppEnums';
 import {Link} from 'react-router-dom';
 import clsx from 'clsx';
+import {Fonts} from '../../../shared/constants/AppEnums';
+import IntlMessages from '../../../@crema/utility/IntlMessages';
+import InfoView from '../../../@crema/core/InfoView';
 import {CremaTheme} from '../../../types/AppContextPropsType';
 
 const useStyles = makeStyles((theme: CremaTheme) => ({
@@ -95,8 +95,8 @@ const MyTextField = (props: any) => {
 const validationSchema = yup.object({
   email: yup
     .string()
-    .email('' + <IntlMessages id='validation.emailFormat' />)
-    .required('' + <IntlMessages id='validation.emailRequired' />),
+    .email(`${(<IntlMessages id='validation.emailFormat' />)}`)
+    .required(`${(<IntlMessages id='validation.emailRequired' />)}`),
 });
 
 interface ForgetPasswordProps {}
@@ -109,7 +109,7 @@ const ForgetPasswordJwtAuth: React.FC<ForgetPasswordProps> = () => {
       <Box mb={{xs: 6, md: 8, xl: 18}} textAlign='center'>
         <img
           className={classes.image}
-          src={'/assets/images/logo-white-with-name.png'}
+          src='/assets/images/logo-white-with-name.png'
           alt='crema-logo'
         />
       </Box>
@@ -136,7 +136,7 @@ const ForgetPasswordJwtAuth: React.FC<ForgetPasswordProps> = () => {
           </Box>
 
           <Formik
-            validateOnChange={true}
+            validateOnChange
             initialValues={{
               email: '',
             }}

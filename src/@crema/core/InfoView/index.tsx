@@ -1,6 +1,6 @@
 import React from 'react';
-import {Loader, MessageView} from '../../../@crema';
 import {useSelector} from 'react-redux';
+import {Loader, MessageView} from '../..';
 import {AppState} from '../../../redux/store';
 
 interface InfoViewProps {}

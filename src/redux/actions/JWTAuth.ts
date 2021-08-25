@@ -1,10 +1,10 @@
+import {Dispatch} from 'redux';
 import jwtAxios from '../../@crema/services/auth/jwt-auth/jwt-api';
 import {fetchError, fetchStart, fetchSuccess} from './Common';
 import {AuthType} from '../../shared/constants/AppEnums';
 import {defaultUser} from '../../shared/constants/AppConst';
 import {AuthUser} from '../../types/models/AuthUser';
 import {AppActions} from '../../types';
-import {Dispatch} from 'redux';
 import {
   SET_AUTH_TOKEN,
   SIGNOUT_AUTH_SUCCESS,
@@ -20,7 +20,7 @@ export const onJwtUserSignUp = (body: {
     dispatch(fetchStart());
     try {
       const res = await jwtAxios.post('/user/login', body);
-      console.log(res)
+      console.log(res);
       localStorage.setItem('token', res.data.token);
       dispatch(setJWTToken(res.data.token));
       await loadJWTUser(dispatch);
@@ -31,7 +31,7 @@ export const onJwtUserSignUp = (body: {
   };
 };
 
-export const onJwtSignIn = (body: {email: string; password: string}) => {
+export const onJwtSignIn = (body: {userName: string; password: string}) => {
   return async (dispatch: Dispatch<AppActions>) => {
     dispatch(fetchStart());
     try {

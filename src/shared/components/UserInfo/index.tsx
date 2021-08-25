@@ -15,7 +15,7 @@ import {Fonts, ThemeMode} from '../../constants/AppEnums';
 import AppContextPropsType from '../../../types/AppContextPropsType';
 import {AuthUser} from '../../../types/models/AuthUser';
 
-const useStyles = makeStyles(theme => {
+const useStyles = makeStyles((theme) => {
   return {
     crUserInfo: {
       backgroundColor: 'rgba(0,0,0,.08)',

@@ -7,7 +7,7 @@ import 'slick-carousel/slick/slick-theme.css';
 
 import './shared/styles/index.css';
 import App from './App';
-import '@crema/services';
+import './@crema/services';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(<App />, document.getElementById('root'));

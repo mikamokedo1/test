@@ -1,13 +1,13 @@
 import React, {CSSProperties, ReactNode, useContext} from 'react';
-import {onToggleAppDrawer} from '../../../redux/actions';
 import {useDispatch, useSelector} from 'react-redux';
-import InfoView from '@crema/core/InfoView';
 import {Box} from '@material-ui/core';
 import Hidden from '@material-ui/core/Hidden';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
-import {Fonts} from '../../../shared/constants/AppEnums';
 import Card from '@material-ui/core/Card';
+import InfoView from '@crema/core/InfoView';
+import {Fonts} from '../../../shared/constants/AppEnums';
+import {onToggleAppDrawer} from '../../../redux/actions';
 import useStyles from './index.style';
 import {AppContext} from '../../index';
 import AppSidebar from './AppSidebar';

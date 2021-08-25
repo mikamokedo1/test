@@ -36,7 +36,7 @@ const AppSidebar: React.FC<AppSidebarProps> = ({
     <Drawer
       anchor={position}
       open={navCollapsed}
-      onClose={ev => handleToggleDrawer()}
+      onClose={(ev) => handleToggleDrawer()}
       classes={{
         root: clsx(variant),
         paper: clsx(variant),

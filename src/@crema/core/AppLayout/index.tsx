@@ -17,8 +17,6 @@ const useStyle = makeStyles(() => ({
     position: 'relative',
     height: '100vh',
     backgroundColor: '#f3f4f6',
-    background: `url(/assets/images/auth-background.jpg) no-repeat center center`,
-    backgroundSize: 'cover',
 
     '& .scrollbar-container': {
       flex: 1,
@@ -26,7 +24,9 @@ const useStyle = makeStyles(() => ({
       flexDirection: 'column',
     },
     '& .main-content-view': {
-      padding: 20,
+      justifyContent: 'center',
+      alignItems: 'center',
+      display: 'flex',
     },
     '& .footer': {
       marginRight: 0,

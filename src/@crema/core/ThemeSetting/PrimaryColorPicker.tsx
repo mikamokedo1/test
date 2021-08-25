@@ -1,10 +1,10 @@
-import React, {useContext, useState} from 'react';
-import AppContext from '../../utility/AppContext';
-import {SketchPicker} from 'react-color';
-import {makeStyles} from '@material-ui/core/index';
+import React, { useContext, useState } from 'react';
+import { SketchPicker } from 'react-color';
+import { makeStyles } from '@material-ui/core/index';
 import Box from '@material-ui/core/Box';
-import {CremaTheme} from '../../../types/AppContextPropsType';
-import {grey} from '@material-ui/core/colors';
+import { grey } from '@material-ui/core/colors';
+import { CremaTheme } from '../../../types/AppContextPropsType';
+import AppContext from '../../utility/AppContext';
 
 const useStyles = makeStyles((theme: CremaTheme) => {
   return {
@@ -39,7 +39,7 @@ interface PrimaryColorPickerProps {}
 
 const PrimaryColorPicker: React.FC<PrimaryColorPickerProps> = () => {
   const [visible, setVisibility] = useState(false);
-  const {primary, theme, updateTheme} = useContext(AppContext);
+  const { primary, theme, updateTheme } = useContext(AppContext);
 
   const classes = useStyles();
 
@@ -52,12 +52,10 @@ const PrimaryColorPicker: React.FC<PrimaryColorPickerProps> = () => {
         </Box>
       </Box>
       {visible ? (
-        <Box
-          className={classes.cpPopover}
-          onClick={() => setVisibility(!visible)}>
+        <Box className={classes.cpPopover} onClick={() => setVisibility(!visible)}>
           <SketchPicker
             color={primary}
-            onChangeComplete={color => {
+            onChangeComplete={(color) => {
               theme.palette.primary.main = color.hex;
               updateTheme!(theme);
             }}

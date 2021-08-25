@@ -6,19 +6,19 @@ import {Form, Formik, useField} from 'formik';
 import * as yup from 'yup';
 import {useDispatch} from 'react-redux';
 
-import InfoView from '@crema/core/InfoView';
-import {onJwtUserSignUp} from '../../../redux/actions';
 import {Link} from 'react-router-dom';
 import Box from '@material-ui/core/Box';
-import IntlMessages from '../../../@crema/utility/IntlMessages';
 import {makeStyles} from '@material-ui/core/styles';
 import clsx from 'clsx';
-import {Fonts} from '../../../shared/constants/AppEnums';
 import Grid from '@material-ui/core/Grid';
-import {GridContainer} from '../../../@crema';
 import grey from '@material-ui/core/colors/grey';
-import {CremaTheme} from '../../../types/AppContextPropsType';
 import {useIntl} from 'react-intl';
+import {Fonts} from '../../../shared/constants/AppEnums';
+import {GridContainer} from '../../../@crema';
+import {CremaTheme} from '../../../types/AppContextPropsType';
+import IntlMessages from '../../../@crema/utility/IntlMessages';
+import {onJwtUserSignUp} from '../../../redux/actions';
+import InfoView from '../../../@crema/core/InfoView';
 
 const useStyles = makeStyles((theme: CremaTheme) => ({
   formRoot: {
@@ -105,7 +105,7 @@ const SignupFirebase: React.FC<{}> = () => {
         display='flex'
         flexDirection='column'>
         <Formik
-          validateOnChange={true}
+          validateOnChange
           initialValues={{
             name: '',
             email: '',

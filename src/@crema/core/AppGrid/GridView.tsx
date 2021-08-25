@@ -1,22 +1,22 @@
-import React, {CSSProperties, useEffect, useState} from 'react';
-import {useBottomScrollListener} from 'react-bottom-scroll-listener';
-import {Box, makeStyles, useTheme} from '@material-ui/core';
+import React, { CSSProperties, useEffect, useState } from 'react';
+import { useBottomScrollListener } from 'react-bottom-scroll-listener';
+import { Box, makeStyles, useTheme } from '@material-ui/core';
 import grey from '@material-ui/core/colors/grey';
 import AppAnimateGroup from '../AppAnimateGroup';
-import {useWidth} from '../../utility/Utils';
+import { useWidth } from '../../utility/Utils';
 
 const useStyles = makeStyles(() => ({
   gridContainer: {
     width: '100%',
   },
-  columnRow: (props: {itemPadding: number; displayColumn: number}) => ({
+  columnRow: (props: { itemPadding: number; displayColumn: number }) => ({
     display: 'flex',
     flexDirection: 'row',
     flexWrap: 'wrap',
     marginLeft: -props.itemPadding,
     marginRight: -props.itemPadding,
   }),
-  columnCount: (props: {itemPadding: number; displayColumn: number}) => ({
+  columnCount: (props: { itemPadding: number; displayColumn: number }) => ({
     flexGrow: 0,
     maxWidth: `${100 / props.displayColumn}%`,
     flexBasis: `${100 / props.displayColumn}%`,
@@ -26,22 +26,13 @@ const useStyles = makeStyles(() => ({
 }));
 
 const getEmptyContainer = (ListEmptyComponent: any) => {
-  if (ListEmptyComponent)
-    return React.isValidElement(ListEmptyComponent) ? (
-      ListEmptyComponent
-    ) : (
-      <ListEmptyComponent />
-    );
+  if (ListEmptyComponent) return React.isValidElement(ListEmptyComponent) ? ListEmptyComponent : <ListEmptyComponent />;
   return null;
 };
 
 const getFooterContainer = (ListFooterComponent: any) => {
   if (ListFooterComponent)
-    return React.isValidElement(ListFooterComponent) ? (
-      ListFooterComponent
-    ) : (
-      <ListFooterComponent />
-    );
+    return React.isValidElement(ListFooterComponent) ? ListFooterComponent : <ListFooterComponent />;
   return null;
 };
 
@@ -99,27 +90,18 @@ const GridView: React.FC<GridViewProps> = ({
       if (responsive) {
         if (width === 'xs') {
           return responsive.xs || column;
-        } else if (width === 'sm') {
+        }
+        if (width === 'sm') {
           return responsive.sm || responsive.xs || column;
-        } else if (width === 'md') {
+        }
+        if (width === 'md') {
           return responsive.md || responsive.sm || responsive.xs || column;
-        } else if (width === 'lg') {
-          return (
-            responsive.lg ||
-            responsive.md ||
-            responsive.sm ||
-            responsive.xs ||
-            column
-          );
-        } else if (width === 'xl') {
-          return (
-            responsive.xl ||
-            responsive.lg ||
-            responsive.md ||
-            responsive.sm ||
-            responsive.xs ||
-            column
-          );
+        }
+        if (width === 'lg') {
+          return responsive.lg || responsive.md || responsive.sm || responsive.xs || column;
+        }
+        if (width === 'xl') {
+          return responsive.xl || responsive.lg || responsive.md || responsive.sm || responsive.xs || column;
         }
       } else {
         return column;
@@ -128,20 +110,20 @@ const GridView: React.FC<GridViewProps> = ({
     setColumn(getColumnCount());
   }, [width, column, responsive]);
 
-  const classes = useStyles({displayColumn, itemPadding});
+  const classes = useStyles({ displayColumn, itemPadding });
 
   let style = containerStyle;
   if (border) {
-    style = {...style, ...borderStyle};
+    style = { ...style, ...borderStyle };
   }
   useBottomScrollListener(onEndReached, 200);
   return (
     <Box className={classes.gridContainer}>
-      <Box className={classes.columnRow} style={{...style}} {...rest}>
+      <Box className={classes.columnRow} style={{ ...style }} {...rest}>
         <AppAnimateGroup>
           {data.length > 0
             ? data.map((item: any, index: number) => (
-                <Box key={'grid-' + index} className={classes.columnCount}>
+              <Box key={`grid-${index}`} className={classes.columnCount}>
                   {renderRow(item, index)}
                 </Box>
               ))

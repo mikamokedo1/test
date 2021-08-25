@@ -11,7 +11,7 @@ import {orange} from '@material-ui/core/colors';
 import {Fonts} from '../../../shared/constants/AppEnums';
 import Hidden from '@material-ui/core/Hidden';
 
-const useStyles = makeStyles(theme => {
+const useStyles = makeStyles((theme) => {
   return {
     userRoot: {
       display: 'flex',

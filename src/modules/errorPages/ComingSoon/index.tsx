@@ -4,16 +4,16 @@ import TextField from '@material-ui/core/TextField';
 import {useDispatch} from 'react-redux';
 import {Form, Formik, useField} from 'formik';
 import * as yup from 'yup';
-import {showMessage} from '../../../redux/actions';
-import InfoView from '@crema/core/InfoView';
-import IntlMessages from '../../../@crema/utility/IntlMessages';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import {grey} from '@material-ui/core/colors';
 import {makeStyles} from '@material-ui/core';
+import {useIntl} from 'react-intl';
+import InfoView from '../../../@crema/core/InfoView';
+import {showMessage} from '../../../redux/actions';
+import IntlMessages from '../../../@crema/utility/IntlMessages';
 import {Fonts} from '../../../shared/constants/AppEnums';
 import AppAnimate from '../../../@crema/core/AppAnimate';
-import {useIntl} from 'react-intl';
 
 const useStyles = makeStyles(() => {
   return {
@@ -92,7 +92,7 @@ const ComingSoon = () => {
           </Box>
           <Box mx='auto' mb={5} maxWidth={384}>
             <Formik
-              validateOnChange={true}
+              validateOnChange
               initialValues={{
                 email: '',
               }}
@@ -128,7 +128,7 @@ const ComingSoon = () => {
           </Box>
           <Box mb={5} maxWidth={{xs: 300, sm: 400, xl: 672}} width='100%'>
             <img
-              src={'/assets/images/errorPageImages/comingsoon.png'}
+              src='/assets/images/errorPageImages/comingsoon.png'
               alt='404'
             />
           </Box>

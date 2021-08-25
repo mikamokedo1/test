@@ -22,7 +22,7 @@ interface AppSidebarProps {
   setCollapsed: (isCollapsed: boolean) => void;
 }
 
-const AppSidebar: React.FC<AppSidebarProps> = props => {
+const AppSidebar: React.FC<AppSidebarProps> = (props) => {
   const {isCollapsed, setCollapsed} = props;
   const {themeMode} = useContext(AppContext);
 

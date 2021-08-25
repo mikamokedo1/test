@@ -1,17 +1,13 @@
 import React from 'react';
-import {Redirect} from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
-import {createRoutes} from '../@crema/utility/Utils';
-import {samplePagesConfig} from './sample';
-import {errorPagesConfigs} from './errorPages';
-import {authRouteConfig} from './auth';
-import {initialUrl} from '../shared/constants/AppConst';
+import { createRoutes } from '../@crema/utility/Utils';
+import { samplePagesConfig } from './sample';
+import { errorPagesConfigs } from './errorPages';
+import { authRouteConfig } from './auth';
+import { initialUrl } from '../shared/constants/AppConst';
 
-const routeConfigs = [
-  ...samplePagesConfig,
-  ...errorPagesConfigs,
-  ...authRouteConfig,
-];
+const routeConfigs = [...samplePagesConfig, ...errorPagesConfigs, ...authRouteConfig];
 
 const routes = [
   ...createRoutes(routeConfigs),

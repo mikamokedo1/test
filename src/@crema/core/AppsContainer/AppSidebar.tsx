@@ -17,7 +17,7 @@ interface AppSidebarProps {
   sidebarContent: ReactNode;
 }
 
-const AppSidebar: React.FC<AppSidebarProps> = props => {
+const AppSidebar: React.FC<AppSidebarProps> = (props) => {
   const {isAppDrawerOpen, footer, navStyle, fullView, sidebarContent} = props;
   const dispatch = useDispatch();
   const classes = useStyles({footer, navStyle, fullView});
