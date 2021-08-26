@@ -100,7 +100,7 @@ const SigninJwtAuth: React.FC<UserSigninProps> = (props) => {
           validationSchema={validationSchema}
           onSubmit={(data, { setSubmitting }) => {
             setSubmitting(true);
-            dispatch(onJwtSignIn({ userName: data.email, password: data.password }));
+            dispatch(onJwtSignIn({ username: data.email, password: data.password }));
             setSubmitting(false);
           }}>
           {({ isSubmitting }) => (

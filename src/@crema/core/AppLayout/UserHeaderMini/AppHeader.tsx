@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
@@ -6,28 +6,25 @@ import MenuIcon from '@material-ui/icons/Menu';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
-import LanguageSwitcher from '../../LanguageSwitcher';
-import {toggleNavCollapsed} from '../../../../redux/actions';
-import {useDispatch} from 'react-redux';
+import { useDispatch } from 'react-redux';
 import Hidden from '@material-ui/core/Hidden';
 import Box from '@material-ui/core/Box';
+import clsx from 'clsx';
+import LanguageSwitcher from '../../LanguageSwitcher';
+import { toggleNavCollapsed } from '../../../../redux/actions';
 import SearchBar from '../../SearchBar';
 import useStyles from './AppHeader.style';
 import HeaderMessages from '../../HeaderMessages';
 import Notifications from '../../Notifications';
 import AppLogo from '../../../../shared/components/AppLogo';
 import HeaderUser from '../../../../shared/components/HeaderUser';
-import clsx from 'clsx';
 
 interface AppHeaderProps {}
 
 const AppHeader: React.FC<AppHeaderProps> = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const [
-    mobileMoreAnchorEl,
-    setMobileMoreAnchorEl,
-  ] = useState<null | HTMLElement>(null);
+  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState<null | HTMLElement>(null);
 
   function handleMobileMenuClose() {
     setMobileMoreAnchorEl(null);
@@ -41,10 +38,10 @@ const AppHeader: React.FC<AppHeaderProps> = () => {
   const renderMobileMenu = (
     <Menu
       anchorEl={mobileMoreAnchorEl}
-      anchorOrigin={{vertical: 'top', horizontal: 'right'}}
+      anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
       id={mobileMenuId}
       keepMounted
-      transformOrigin={{vertical: 'top', horizontal: 'right'}}
+      transformOrigin={{ vertical: 'top', horizontal: 'right' }}
       open={Boolean(mobileMoreAnchorEl)}
       onClose={handleMobileMenuClose}>
       <MenuItem className={classes.menuItemRoot}>
@@ -53,7 +50,7 @@ const AppHeader: React.FC<AppHeaderProps> = () => {
       <MenuItem className={classes.menuItemRoot}>
         <Notifications />
       </MenuItem>
-      <LanguageSwitcher />
+      {/* <LanguageSwitcher /> */}
     </Menu>
   );
 
@@ -76,7 +73,7 @@ const AppHeader: React.FC<AppHeaderProps> = () => {
           <Box className={classes.grow} />
           <SearchBar borderLight placeholder='Search…' />
           <Box className={classes.sectionDesktop}>
-            <LanguageSwitcher />
+            {/* <LanguageSwitcher /> */}
             <HeaderMessages />
             <Notifications />
           </Box>

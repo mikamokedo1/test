@@ -1,9 +1,9 @@
-import {createMuiTheme, useTheme} from '@material-ui/core/styles';
-import {useMediaQuery} from '@material-ui/core';
-import {CremaTheme} from '../../types/AppContextPropsType';
-import {Breakpoint} from '@material-ui/core/styles/createBreakpoints';
+import { createMuiTheme, useTheme } from '@material-ui/core/styles';
+import { useMediaQuery } from '@material-ui/core';
+import { Breakpoint } from '@material-ui/core/styles/createBreakpoints';
 import moment from 'moment';
-import {useIntl} from 'react-intl';
+import { useIntl } from 'react-intl';
+import { CremaTheme } from '../../types/AppContextPropsType';
 
 type BreakpointOrNull = Breakpoint | null;
 
@@ -12,9 +12,7 @@ export const isBreakPointDown = (key: 'xs' | 'sm' | 'md' | 'lg' | 'xl') => {
   return defaultTheme.breakpoints.width(key) > window.innerWidth;
 };
 
-export const useDownBreakPointChecker = (
-  key: 'xs' | 'sm' | 'md' | 'lg' | 'xl',
-) => {
+export const useDownBreakPointChecker = (key: 'xs' | 'sm' | 'md' | 'lg' | 'xl') => {
   return useMediaQuery((theme: CremaTheme) => theme.breakpoints.down(key));
 };
 
@@ -47,10 +45,8 @@ export const setRoutes = (config: any) => {
   let routes = [...config.routes];
   if (config.auth) {
     routes = routes.map((route) => {
-      let auth = route.auth
-        ? [...config.auth, ...route.auth]
-        : [...config.auth];
-      return {...route, auth};
+      const auth = route.auth ? [...config.auth, ...route.auth] : [...config.auth];
+      return { ...route, auth };
     });
   }
 
@@ -68,31 +64,24 @@ export const getBreakPointsValue = (valueSet: any, breakpoint: string) => {
     case 'lg':
       return valueSet.lg || valueSet.md || valueSet.sm || valueSet.xs;
     default:
-      return (
-        valueSet.xl || valueSet.lg || valueSet.md || valueSet.sm || valueSet.xs
-      );
+      return valueSet.xl || valueSet.lg || valueSet.md || valueSet.sm || valueSet.xs;
   }
 };
 export const getFileSize = (bytes: number) => {
   if (bytes === 0) return '0 Bytes';
-  let k = 1024,
-    dm = 2,
-    sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'],
-    i = Math.floor(Math.log(bytes) / Math.log(k));
-  return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
+  const k = 1024;
+  const dm = 2;
+  const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+  const i = Math.floor(Math.log(bytes) / Math.log(k));
+  return `${parseFloat((bytes / Math.pow(k, i)).toFixed(dm))} ${sizes[i]}`;
 };
 
-export const getCustomDateTime = (
-  value = 0,
-  unit = 'days',
-  format = 'YYYY-MM-DD',
-): string => {
+export const getCustomDateTime = (value = 0, unit = 'days', format = 'YYYY-MM-DD'): string => {
   if (value === 0) {
     return moment().format(format) as string;
-  } else {
-    // @ts-ignore
-    return moment().add(value, unit).format(format) as string;
   }
+  // @ts-ignore
+  return moment().add(value, unit).format(format) as string;
 };
 
 export const timeFromNow = (date: string) => {
@@ -104,7 +93,7 @@ export const timeFromNow = (date: string) => {
 // 'intl' service singleton reference
 let intl: any;
 
-export function IntlGlobalProvider({children}: any) {
+export function IntlGlobalProvider({ children }: any) {
   intl = useIntl();
   // Keep the 'intl' service reference
   return children;
@@ -113,10 +102,7 @@ export function IntlGlobalProvider({children}: any) {
 export const appIntl = () => {
   return intl;
 };
-export const checkPermission = (
-  routeAuth: any | null | undefined,
-  userRole: any | null | undefined,
-) => {
+export const checkPermission = (routeAuth: any | null | undefined, userRole: any | null | undefined) => {
   if (routeAuth === null || routeAuth === undefined) {
     return true;
   }
