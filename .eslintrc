@@ -52,6 +52,14 @@
       "react/jsx-wrap-multilines":"warn",
       "react/jsx-curly-brace-presence":"warn",
       "prefer-template":"warn",
+      "no-underscore-dangle":"warn",
+      "prefer-destructuring":"warn",
+      "import/no-extraneous-dependencies":"warn",
+      "react/no-array-index-key":"warn",
+      "consistent-return":"warn",
+      "no-param-reassign":"warn",
+      "object-shorthand":"warn",
+      "react/jsx-curly-newline":"warn",
       "prettier/prettier": [
         "warn",
         {
@@ -76,19 +84,21 @@
       ],
       "import/prefer-default-export": "off",
       "react/prop-types": "off",
-      "import/no-extraneous-dependencies": [
-        "error",
-        {
-          "devDependencies": ["**/*.test.*"],
-          "optionalDependencies": false,
-          "peerDependencies": false
-        }
-      ],
       "react/jsx-one-expression-per-line": 0,
       "@typescript-eslint/explicit-module-boundary-types": "off",
       "no-use-before-define": "off",
       "no-shadow": "off",
-      "react/jsx-closing-bracket-location": "off"
+      "react/jsx-closing-bracket-location": "off",
+      "react/jsx-boolean-value":"warn",
+      "import/no-useless-path-segments":"warn",
+      "spaced-comment":"warn",
+      "no-useless-return":"warn",
+      "no-lonely-if":"warn",
+      "no-else-return":"warn",
+      "no-restricted-properties":"warn"
+
+      
+
     }
   }
   

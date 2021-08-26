@@ -1,14 +1,23 @@
-import {AppActions} from '../../types';
-import {
-  SET_AUTH_TOKEN,
-  SIGNOUT_AUTH_SUCCESS,
-  UPDATE_AUTH_USER,
-} from '../../types/actions/Auth.actions';
-import {AuthUser} from '../../types/models/AuthUser';
+import { AppActions } from '../../types';
+import { SET_AUTH_TOKEN, SIGNOUT_AUTH_SUCCESS, UPDATE_AUTH_USER } from '../../types/actions/Auth.actions';
+import { AuthUser } from '../../types/models/AuthUser';
 
-const INIT_STATE: {user: AuthUser | null; token: string | null} = {
+type ActionType = 'login';
+
+interface INIT_AUTH {
+  user: AuthUser | null;
+  token: string | null;
+  errors: {
+    [k in ActionType]: null | string;
+  };
+}
+
+const INIT_STATE: INIT_AUTH = {
   user: null,
   token: null,
+  errors: {
+    login: null,
+  },
 };
 
 const Auth = (state = INIT_STATE, action: AppActions) => {
@@ -28,7 +37,8 @@ const Auth = (state = INIT_STATE, action: AppActions) => {
     case SET_AUTH_TOKEN: {
       return {
         ...state,
-        token: action.payload,
+        token: action.payload.token,
+        user: action.payload.userName,
       };
     }
     default:

@@ -48,6 +48,7 @@ const defaultConfig: any = {
         A200: '#aaaaaa',
         A400: '#303030',
         A700: '#616161',
+        A800: '#F7685B',
       },
       text: {
         primary: '#192A3E',

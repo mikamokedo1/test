@@ -6,11 +6,11 @@ import MenuIcon from '@material-ui/icons/Menu';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
-import LanguageSwitcher from '../../LanguageSwitcher';
-import {toggleNavCollapsed} from '../../../../redux/actions';
-import {useDispatch} from 'react-redux';
+import { useDispatch } from 'react-redux';
 import Hidden from '@material-ui/core/Hidden';
 import Box from '@material-ui/core/Box';
+import { toggleNavCollapsed } from '../../../../redux/actions';
+import LanguageSwitcher from '../../LanguageSwitcher';
 import HeaderMessages from '../../HeaderMessages';
 import Notifications from '../../Notifications';
 import SearchBar from '../../SearchBar';
@@ -22,10 +22,7 @@ interface AppHeaderProps {}
 const AppHeader: React.FC<AppHeaderProps> = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const [
-    mobileMoreAnchorEl,
-    setMobileMoreAnchorEl,
-  ] = React.useState<null | HTMLElement>(null);
+  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState<null | HTMLElement>(null);
 
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
@@ -41,10 +38,10 @@ const AppHeader: React.FC<AppHeaderProps> = () => {
   const renderMobileMenu = (
     <Menu
       anchorEl={mobileMoreAnchorEl}
-      anchorOrigin={{vertical: 'top', horizontal: 'right'}}
+      anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
       id={mobileMenuId}
       keepMounted
-      transformOrigin={{vertical: 'top', horizontal: 'right'}}
+      transformOrigin={{ vertical: 'top', horizontal: 'right' }}
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}>
       <MenuItem className={classes.menuItemRoot}>
@@ -53,7 +50,7 @@ const AppHeader: React.FC<AppHeaderProps> = () => {
       <MenuItem className={classes.menuItemRoot}>
         <Notifications />
       </MenuItem>
-      <LanguageSwitcher />
+      {/* <LanguageSwitcher /> */}
     </Menu>
   );
 
@@ -76,7 +73,7 @@ const AppHeader: React.FC<AppHeaderProps> = () => {
           <Box className={classes.grow} />
           <SearchBar borderLight placeholder='Search…' />
           <Box className={classes.sectionDesktop}>
-            <LanguageSwitcher />
+            {/* <LanguageSwitcher /> */}
             <HeaderMessages />
             <Notifications />
           </Box>

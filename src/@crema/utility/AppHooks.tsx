@@ -1,17 +1,17 @@
-import {useDispatch, useSelector} from 'react-redux';
-import {useEffect, useState} from 'react';
-import {fetchStart, fetchSuccess, setJWTToken} from '../../redux/actions';
-import {AuthType} from '../../shared/constants/AppEnums';
-import {defaultUser} from '../../shared/constants/AppConst';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
+import { fetchStart, fetchSuccess, setJWTToken } from '../../redux/actions';
+import { AuthType } from '../../shared/constants/AppEnums';
+import { defaultUser } from '../../shared/constants/AppConst';
 import jwtAxios from '../services/auth/jwt-auth/jwt-api';
-import {AppState} from '../../redux/store';
-import {UPDATE_AUTH_USER} from '../../types/actions/Auth.actions';
-import {AuthUser} from '../../types/models/AuthUser';
+import { AppState } from '../../redux/store';
+import { UPDATE_AUTH_USER } from '../../types/actions/Auth.actions';
+import { AuthUser } from '../../types/models/AuthUser';
 
 export const useAuthToken = (): [boolean, AuthUser | null] => {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
-  const {user} = useSelector<AppState, AppState['auth']>(({auth}) => auth);
+  const { user } = useSelector<AppState, AppState['auth']>(({ auth }) => auth);
 
   useEffect(() => {
     const validateAuth = async () => {
@@ -21,7 +21,7 @@ export const useAuthToken = (): [boolean, AuthUser | null] => {
         dispatch(fetchSuccess());
         return;
       }
-      dispatch(setJWTToken(token));
+      dispatch(setJWTToken(token, 'admin'));
       try {
         const res = await jwtAxios.get('/auth');
         dispatch(fetchSuccess());
@@ -39,7 +39,6 @@ export const useAuthToken = (): [boolean, AuthUser | null] => {
         return;
       } catch (err) {
         dispatch(fetchSuccess());
-        return;
       }
     };
 
@@ -55,7 +54,7 @@ export const useAuthToken = (): [boolean, AuthUser | null] => {
 };
 
 export const useAuthUser = (): AuthUser | null => {
-  const {user} = useSelector<AppState, AppState['auth']>(({auth}) => auth);
+  const { user } = useSelector<AppState, AppState['auth']>(({ auth }) => auth);
   if (user) {
     return user;
   }

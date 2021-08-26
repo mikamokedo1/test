@@ -6,7 +6,8 @@ import { Form, Formik, useField } from 'formik';
 import * as yup from 'yup';
 import { useHistory } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { AppState } from 'src/redux/store';
 import { onJwtSignIn } from '../../../redux/actions';
 import { Fonts } from '../../../shared/constants/AppEnums';
 import { CremaTheme } from '../../../types/AppContextPropsType';
@@ -55,6 +56,10 @@ const useStyles = makeStyles((theme: CremaTheme) => ({
     textAlign: 'right',
     fontWeight: 'bold',
   },
+  error: {
+    fontSize: '14px',
+    color: '#F7685B',
+  },
 }));
 
 const MyTextField = (props: any) => {
@@ -68,6 +73,7 @@ const validationSchema = yup.object({
 });
 
 const Signin: React.FC<{}> = () => {
+  const common = useSelector((state: AppState) => state.common.message);
   const classes = useStyles();
   const dispatch = useDispatch();
   const history = useHistory();
@@ -91,7 +97,7 @@ const Signin: React.FC<{}> = () => {
             validationSchema={validationSchema}
             onSubmit={(data, { setSubmitting }) => {
               setSubmitting(true);
-              dispatch(onJwtSignIn({ userName: data.userName, password: data.password }));
+              dispatch(onJwtSignIn({ username: data.userName, password: data.password }));
               setSubmitting(false);
             }}>
             {({ isSubmitting }) => (
@@ -107,6 +113,7 @@ const Signin: React.FC<{}> = () => {
                 <Box component='span' className={classes.pointer} onClick={onGoToForgetPassword} fontSize={15}>
                   Quên mật khẩu?
                 </Box>
+                {common && <Box className={classes.error}>{common}</Box>}
 
                 <Box>
                   <Button

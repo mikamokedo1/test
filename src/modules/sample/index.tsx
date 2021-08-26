@@ -2,7 +2,7 @@ import React from 'react';
 
 export const samplePagesConfig = [
   {
-    auth: ['user'],
+    // auth: ['user'],
     routes: [
       {
         path: '/sample/page-1',
@@ -11,7 +11,7 @@ export const samplePagesConfig = [
     ],
   },
   {
-    auth: ['user'],
+    // auth: ['user'],
     routes: [
       {
         path: '/sample/page-2',
