@@ -7,15 +7,8 @@ import { settingRouterConfig } from './setting/settingRouterConfig';
 import { errorPagesConfigs } from './errorPages';
 import { authRouteConfig } from './auth';
 import { initialUrl } from '../shared/constants/AppConst';
-import { samplePagesConfig } from './sample';
 
-const routeConfigs = [
-  ...dashboardPagesConfig,
-  ...samplePagesConfig,
-  ...settingRouterConfig,
-  ...errorPagesConfigs,
-  ...authRouteConfig,
-];
+const routeConfigs = [...dashboardPagesConfig, ...settingRouterConfig, ...errorPagesConfigs, ...authRouteConfig];
 
 const routes = [
   ...createRoutes(routeConfigs),
