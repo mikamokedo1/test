@@ -1,4 +1,4 @@
-import {AuthType} from '../../shared/constants/AppEnums';
+import { AuthType } from '../../shared/constants/AppEnums';
 
 export interface AuthUser {
   uid: string;
@@ -6,6 +6,6 @@ export interface AuthUser {
   email?: string;
   photoURL?: string;
   token?: string;
-  authType: AuthType;
+  authType?: AuthType;
   role: string[];
 }

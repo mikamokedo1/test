@@ -21,7 +21,7 @@ export const useAuthToken = (): [boolean, AuthUser | null] => {
         dispatch(fetchSuccess());
         return;
       }
-      dispatch(setJWTToken(token, 'admin'));
+      dispatch(setJWTToken(token));
       try {
         const res = await jwtAxios.get('/auth');
         dispatch(fetchSuccess());
