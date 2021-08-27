@@ -15,7 +15,7 @@ export const onJwtUserSignUp = (body: { email: string; password: string; name: s
       const res = await jwtAxios.post('/users/login', body);
       console.log(res);
       localStorage.setItem('token', res.data.token);
-      dispatch(setJWTToken(res.data.token, 'admin'));
+      dispatch(setJWTToken(res.data.token));
       // await loadJWTUser(dispatch);
     } catch (err) {
       console.log('error!!!!', err.response.data.error);
@@ -32,7 +32,7 @@ export const onJwtSignIn = (body: { username: string; password: string }) => {
       console.log(res.data);
       if (res.data) {
         localStorage.setItem('token', res.data.accessToken);
-        dispatch(setJWTToken(res.data.accessToken, res.data.username));
+        dispatch(setJWTToken(res.data.accessToken));
       } else {
         dispatch(fetchError(get(res, 'result.message')));
         console.log(res.data);
@@ -62,11 +62,10 @@ export const onJwtSignIn = (body: { username: string; password: string }) => {
 //   }
 // };
 
-export const setJWTToken = (token: string, userName: string): AppActions => ({
+export const setJWTToken = (token: string): AppActions => ({
   type: SET_AUTH_TOKEN,
   payload: {
     token,
-    userName,
   },
 });
 
