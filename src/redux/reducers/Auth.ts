@@ -1,3 +1,4 @@
+import { AuthType } from '../../shared/constants/AppEnums';
 import { AppActions } from '../../types';
 import { SET_AUTH_TOKEN, SIGNOUT_AUTH_SUCCESS, UPDATE_AUTH_USER } from '../../types/actions/Auth.actions';
 import { AuthUser } from '../../types/models/AuthUser';
@@ -20,7 +21,7 @@ const INIT_STATE: INIT_AUTH = {
   },
 };
 
-const Auth = (state = INIT_STATE, action: AppActions) => {
+const Auth = (state: INIT_AUTH = INIT_STATE, action: AppActions): INIT_AUTH => {
   switch (action.type) {
     case UPDATE_AUTH_USER: {
       return {
@@ -38,7 +39,14 @@ const Auth = (state = INIT_STATE, action: AppActions) => {
       return {
         ...state,
         token: action.payload.token,
-        user: action.payload.userName,
+        user: {
+          uid: '1',
+          role: ['user', 'admin'],
+          authType: AuthType.JWT_AUTH,
+          displayName: 'displayName',
+          email: 'crema.demo@gmail.com',
+          token: '5f4baae13ccef700178e1da4',
+        },
       };
     }
     default:

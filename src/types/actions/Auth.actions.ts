@@ -8,7 +8,6 @@ export interface SetAuthTokenActions {
   type: typeof SET_AUTH_TOKEN;
   payload: {
     token: string;
-    userName: string;
   };
 }
 
