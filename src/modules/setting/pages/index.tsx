@@ -1,17 +1,25 @@
 import React from 'react';
 import Box from '@material-ui/core/Box';
+import styled from 'styled-components';
 import AppAnimate from '../../../@crema/core/AppAnimate';
+import UserSettingForm from '../container/UserSettingForm';
+import BankSettingForm from '../container/BankSettingForm';
+
+const StyledBox = styled.div`
+  display: flex;
+  width: calc((100% - 30px) / 2);
+`;
 
 const PageOne = () => {
   return (
     <AppAnimate animation='transition.slideUpIn' delay={200}>
-      <Box>
-        <Box component='h4' mb={3} fontSize={20}>
-          Page settings
-        </Box>
-        <Box component='p' fontSize={16}>
-          You can start from here..
-        </Box>
+      <Box display='flex' justifyContent='space-between'>
+        <StyledBox>
+          <UserSettingForm />
+        </StyledBox>
+        <StyledBox>
+          <BankSettingForm />
+        </StyledBox>
       </Box>
     </AppAnimate>
   );

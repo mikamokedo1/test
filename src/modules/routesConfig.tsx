@@ -14,20 +14,20 @@ export interface NavItemProps {
 
 const routesConfig: NavItemProps[] = [
   {
-    id: 'setting',
-    title: 'Setting',
-    messageId: 'sidebar.app.setting',
-    type: 'item',
-    icon: 'settings',
-    url: '/setting',
-  },
-  {
     id: 'dashboard',
     title: 'Dashboard',
     messageId: 'sidebar.app.dashboard',
     type: 'item',
     icon: 'dashboard',
     url: '/dashboards/ctv',
+  },
+  {
+    id: 'setting',
+    title: 'Setting',
+    messageId: 'sidebar.app.setting',
+    type: 'item',
+    icon: 'settings',
+    url: '/setting',
   },
 ];
 export default routesConfig;
